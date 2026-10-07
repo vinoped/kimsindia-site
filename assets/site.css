@@ -30,15 +30,6 @@
     --r: 18px; --r-sm: 12px;                /* corner radius: cards and photos / small tiles and inputs; buttons are full pills */
     --brand-red: #B5121B;                   /* crest red, same in both themes (banner) */
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #111113; --sand: #18181B; --ink: #F4F4F5; --muted: #A1A1AA; --line: #2E2E33;
-      --red: #F0525A; --red-ink: #18181B; --gold: #F0B53A; --green: #58C48A; --confirm: #FFD67A; --confirm-bg: rgba(255, 214, 122, .12);
-      --shadow: 0 18px 40px -22px rgba(0, 0, 0, .8); color-scheme: dark;
-      --deep: #1F1F23; --on-deep: #F4F4F5;
-      --crest-field: #FFFFFF; --crest-mark: #CC1417; --foot: #0A0A0B;   /* white shield, red stars and K */
-    }
-  }
   :root[data-theme="dark"] {
     --paper: #111113; --sand: #18181B; --ink: #F4F4F5; --muted: #A1A1AA; --line: #2E2E33;
     --red: #F0525A; --red-ink: #18181B; --gold: #F0B53A; --green: #58C48A; --confirm: #FFD67A; --confirm-bg: rgba(255, 214, 122, .12);
@@ -111,7 +102,7 @@
   .theme:hover { border-color: var(--ink); }
   .theme .ic { width: 20px; height: 20px; grid-area: 1 / 1; }
   .theme .i-sun { display: none; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .theme .i-sun { display: block; } :root:not([data-theme="light"]) .theme .i-moon { display: none; } }
+  :root[data-theme="dark"] .theme .i-sun { display: block; } :root[data-theme="dark"] .theme .i-moon { display: none; }
   :root[data-theme="dark"] .theme .i-sun { display: block; } :root[data-theme="dark"] .theme .i-moon { display: none; }
   @media (max-width: 980px) { .theme { margin-left: auto; } }
   @media (max-width: 420px) { .theme { width: 40px; height: 40px; } }
@@ -119,6 +110,13 @@
   .call-top svg { width: 18px; height: 18px; color: var(--red); }
   @media (max-width: 980px) { .menu { display: none; } }
   @media (max-width: 560px) { .call-top { display: none; } }
+  /* the wordmark never shrinks under the menu: the header drops the phone number first, then tightens on the smallest phones */
+  .brand { min-width: max-content; }
+  @media (max-width: 1180px) { .call-top { display: none; } .menu { gap: 16px; } }
+  @media (max-width: 374px) {
+    .top .wrap { gap: 10px; } .brand { gap: var(--s-2); } .brand .crest { height: 36px; } .wm { height: 22px; }
+    .theme { width: 36px; height: 36px; } .top .btn { padding: 0 12px; font-size: 13.5px; min-height: 40px; }
+  }
 
   .namebar { margin: 0; background: var(--brand-red); color: #FFFFFF; border-bottom: 3px solid var(--gold); text-align: center; white-space: nowrap; overflow: hidden;
     font: italic 400 clamp(14px, 4.3vw, 21px)/1 var(--display); letter-spacing: .04em; padding: .7em var(--s-4); }
@@ -136,8 +134,34 @@
   .phone-line { color: var(--muted); font-size: 15px; }
   .phone-line b { color: var(--ink); }
   .hero-media { position: relative; }
+  /* clay Montessori objects float in the empty bands above and below the words (bands reserved by padding, so they never cover text) */
+  .hero { position: relative; overflow: clip;
+    background: radial-gradient(55% 65% at 15% 35%, color-mix(in srgb, var(--gold) 11%, transparent), transparent 70%),
+                radial-gradient(45% 55% at 90% 85%, color-mix(in srgb, var(--red) 7%, transparent), transparent 70%); }
+  .hero-copy { position: relative; align-self: stretch; display: grid; align-content: center; padding-block: 124px; }
+  .hero-copy > .flow { position: relative; z-index: 1; }
+  .hero-float { position: absolute; inset: 0; pointer-events: none; }
+  .hf { position: absolute; height: auto; transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 14px 16px rgba(70, 25, 10, .18)); }
+  .hf-rods { width: 124px; left: -4px; top: 22px; --r: -8deg; --i: .05s; --d: 7s; }
+  .hf-magnifier { width: 66px; left: 34%; top: -2px; --r: 18deg; --i: .2s; --d: 6s; }
+  .hf-globe { width: 88px; left: 64%; top: 30px; --r: 6deg; --i: .35s; --d: 8s; }
+  .hf-beads { width: 100px; left: 6%; bottom: 14px; --r: 8deg; --i: .5s; --d: 7.5s; }
+  .hf-tower { width: 50px; left: 46%; bottom: 30px; --r: -5deg; --i: .65s; --d: 6.5s; }
+  .hf-rocket { width: 96px; left: -44px; top: -40px; z-index: 2; --r: 0deg; --i: .8s; --d: 5.5s; }
+  @media (max-width: 900px) {
+    .hero-copy { padding-block: 0; }
+    .hf-rods, .hf-magnifier, .hf-beads, .hf-tower { display: none; }
+    .hf-globe { width: min(84px, 23vw); left: auto; right: 0; top: auto; bottom: -4px; }
+    .hf-rocket { width: 64px; left: -6px; top: -18px; }
+  }
+  @media (max-width: 374px) { .hf-globe { display: none; } }   /* no free space beside the buttons on the smallest phones */
+  @media (prefers-reduced-motion: no-preference) {
+    .hf { animation: hf-in .9s cubic-bezier(.16, 1, .3, 1) var(--i, 0s) both, hf-bob var(--d, 7s) ease-in-out calc(var(--i, 0s) + .9s) infinite alternate; }
+  }
+  @keyframes hf-in { from { opacity: 0; transform: translateY(22px) scale(.7) rotate(var(--r, 0deg)); } to { opacity: 1; transform: translateY(0) scale(1) rotate(var(--r, 0deg)); } }
+  @keyframes hf-bob { from { transform: translateY(0) rotate(var(--r, 0deg)); } to { transform: translateY(-12px) rotate(calc(var(--r, 0deg) + 5deg)); } }
   .hero-media figure { margin: 0; border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3.3; max-width: 100%; }
-  .hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-media figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .callback { position: relative; margin: -22px 18px 0 auto; max-width: 400px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; box-shadow: var(--shadow); display: grid; gap: 10px; }
   @media (max-width: 900px) { .callback { margin: -18px 12px 0; max-width: none; } }
     .callback form .btn { flex: 1 1 100%; }   /* button under the number, so the field is never squeezed */
@@ -145,6 +169,7 @@
   .callback h3 { font-size: 19px; }
   .callback p { color: var(--muted); font-size: 14.5px; }
   .callback form { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .callback form .btn { margin-top: var(--s-2); }   /* 16px between the number and the button; label stays close to its field */
   .callback .lbl { flex: 1 1 100%; font-weight: 800; font-size: 14.5px; }
   .field { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; border: 2px solid var(--line); border-radius: var(--r-sm); background: var(--paper); }
   .field span { padding-left: 12px; font-weight: 800; color: var(--muted); }
@@ -290,7 +315,7 @@
 
   /* ---- the ten superpower colours (from "The 10 Superpowers of Learning") ---- */
   :root { --c1: #1B8A5A; --c2: #6A4CB4; --c3: #D86A12; --c4: #C93C73; --c5: #3D9A3F; --c6: #2672BE; --c7: #D63F33; --c8: #7B52BE; --c9: #C68A06; --c10: #12827F; --teal: #1F8F86; --teal-ink: #FFFFFF; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --c1: #4CC48C; --c2: #A58BF0; --c3: #F39A4D; --c4: #F07BA8; --c5: #74C776; --c6: #6FAEF2; --c7: #F57A6F; --c8: #B595F2; --c9: #F2BD45; --c10: #4FC8C3; --teal: #2BA89E; --teal-ink: #08201E; } }
+  :root[data-theme="dark"] { --c1: #4CC48C; --c2: #A58BF0; --c3: #F39A4D; --c4: #F07BA8; --c5: #74C776; --c6: #6FAEF2; --c7: #F57A6F; --c8: #B595F2; --c9: #F2BD45; --c10: #4FC8C3; --teal: #2BA89E; --teal-ink: #08201E; }
   :root[data-theme="dark"] { --c1: #4CC48C; --c2: #A58BF0; --c3: #F39A4D; --c4: #F07BA8; --c5: #74C776; --c6: #6FAEF2; --c7: #F57A6F; --c8: #B595F2; --c9: #F2BD45; --c10: #4FC8C3; --teal: #2BA89E; --teal-ink: #08201E; }
 
   .ph-hero { padding-block: var(--s-7) var(--s-6); }
@@ -306,7 +331,7 @@
     background: radial-gradient(closest-side, rgba(255, 214, 102, .75), rgba(240, 181, 58, .38) 45%, rgba(240, 181, 58, .12) 68%, transparent 100%);
     filter: blur(6px); animation: elite-glow 6s ease-in-out infinite; }
   /* on a white page the aura needs more gold to read */
-  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .brain::before { width: 72%; background: radial-gradient(closest-side, rgba(255, 196, 40, .95), rgba(245, 176, 30, .55) 42%, rgba(240, 170, 30, .2) 70%, transparent 100%); } }
+  :root:not([data-theme="dark"]) .brain::before { width: 72%; background: radial-gradient(closest-side, rgba(255, 196, 40, .95), rgba(245, 176, 30, .55) 42%, rgba(240, 170, 30, .2) 70%, transparent 100%); }
   :root[data-theme="light"] .brain::before { width: 72%; background: radial-gradient(closest-side, rgba(255, 196, 40, .95), rgba(245, 176, 30, .55) 42%, rgba(240, 170, 30, .2) 70%, transparent 100%); }
   @keyframes elite-glow { 0%, 100% { opacity: .82; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); } }
   .brain-img { position: absolute; z-index: 1; height: auto;
@@ -563,7 +588,7 @@
     .ev-cal .ce { font-size: 21px; }
   }
   @media (max-width: 374px) { .ev-cal { grid-template-columns: minmax(0, 1fr); } }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .page-top { color: #111113; } }
+  :root[data-theme="dark"] .page-top { color: #111113; }
   :root[data-theme="dark"] .page-top { color: #111113; }
 
   /* "AI · now" in a glowing Claude orange: light at the top (behind the picture), deeper where the white text sits */

@@ -2,23 +2,50 @@
 
 > KIMS is a Montessori school in Selaiyur, Chennai, India, for children from Pre-KG to Class 5, recognized by the Tamil Nadu Government. It is an initiative of The VEDIC Educational and Charitable Trust. Children learn every idea with hands-on Montessori materials so they understand rather than memorise, and the school builds "The 10 Superpowers of Learning", the human abilities that AI finds hardest to copy.
 
+Every page below is also published as plain Markdown at the same address plus `index.html.md` (for example https://www.kimsindia.com/faq/index.html.md). The whole site in one file: https://www.kimsindia.com/llms-full.txt
+
 ## Key facts
 - Official name: KIMS Nursery and Primary School. Also known as Kudos Indian Montessori Shikshalaya, or KIMS Selaiyur.
 - Recognition: Recognized by Tamil Nadu Government.
-- Classes: Pre-KG, LKG and UKG (Montessori early years) and Classes 1 to 5 (Tamil Nadu State Board syllabus). Classes 6 to 12 are planned for children who come up through KIMS. For Pre-KG, your child should have completed 3 years by 31 March of the year they join.
+- Classes: Pre-KG, LKG and UKG (Montessori early years) and Classes 1 to 5 (Tamil Nadu State Board syllabus). Classes 6 to 12 are planned for children who come up through KIMS.
+- Joining age: for Pre-KG, a child should have completed 3 years by 31 March of the year they join.
+- School days and hours: Monday to Friday, and some Saturdays. Pre-KG 9:30 am to 12:30 pm; LKG and UKG 9:30 am to 2:30 pm; Classes 1 to 5 9:30 am to 3 pm.
 - Method: Montessori, hands-on, concept-based learning; mixed-age early-years classrooms; English with Tamil and Hindi.
 - Philosophy: The 10 Superpowers of Learning, created by Dr Sindu Sukumaran, D.Litt, Principal and Correspondent of KIMS and Founder & Chairman of The VEDIC Educational and Charitable Trust (founded 10 September 2015): The Explorer, The Detective, The Builder, The Maker, The Chameleon, The Teacher, The Superhero, The Time Traveler, The Shapeshifter, The Upgrader.
-- Address: KIMS, Avvai Nagar, Indira Nagar West Extension, Selaiyur, Chennai 600073, Tamil Nadu, India.
-- Phone: +91 98842 61592, +91 73973 94336. Email: thevedic@gmail.com
-- Admissions: call the school or leave a number at https://apply.kimsindia.com/ ; parents are welcome to visit and watch a class.
+- Activities: Annual Day, Sports Day, festivals, family days, karate (trophies at the FCKA 2nd National Karate Championship) and the Science Olympiad Foundation's international Olympiads.
+- Teaching children in Selaiyur since 2022.
+- Address: KIMS, Avvai Nagar, Indira Nagar West Extension, Selaiyur, Chennai 600073, Tamil Nadu, India. Map: https://maps.app.goo.gl/pvtjJJ6JbX8Po89R7
+- Phone and WhatsApp: +91 98842 61592 and +91 73973 94336 (both on WhatsApp). Email: thevedic@gmail.com
+- Admissions: admissions for 2026-27 are open for Pre-KG to Class 5. Start with the admission enquiry form at https://www.kimsindia.com/admission-enquiry/ or book a school visit at https://www.kimsindia.com/book-a-visit/ . Parents are welcome to visit and watch a class at work.
 - Nearby areas served: Selaiyur, Camp Road, Rajakilpakkam, Madambakkam, Sembakkam, Chitlapakkam, East Tambaram, Tambaram, Medavakkam.
 
 ## Pages
-- [Home](https://www.kimsindia.com/): what KIMS offers, stages from Pre-KG to Class 5, how to visit
-- [Philosophy: The 10 Superpowers of Learning](https://www.kimsindia.com/philosophy/)
-- [Events and school life](https://www.kimsindia.com/events/)
-- [Questions parents ask](https://www.kimsindia.com/faq/)
-- [Admissions enquiry](https://apply.kimsindia.com/)
-- Activities: Annual Day, Sports Day, festivals, family days, karate (FCKA national trophies) and the Science Olympiad Foundation's international Olympiads.
-- Phone and WhatsApp: +91 98842 61592 and +91 73973 94336 (both on WhatsApp). Admissions for 2026-27 are open (Vijayadasami admissions in October 2026); start with the admission enquiry form at https://www.kimsindia.com/admission-enquiry/
-- School days: Monday to Friday, and some Saturdays. School hours: Pre-KG 9:30 am to 12:30 pm; LKG and UKG 9:30 am to 2:30 pm; Classes 1 to 5 9:30 am to 3 pm.
+- [KIMS Nursery and Primary School, Selaiyur](https://www.kimsindia.com/) ([Markdown](https://www.kimsindia.com/index.html.md)): KIMS (Kudos Indian Montessori Shikshalaya) is a Montessori school in Selaiyur, Chennai, for Pre-KG to Class 5, recognized by the Tamil Nadu Government. Children learn concepts with their hands so they understand, not just memorise.
+- [Our philosophy: The 10 Superpowers of Learning](https://www.kimsindia.com/philosophy/) ([Markdown](https://www.kimsindia.com/philosophy/index.html.md)): How KIMS Nursery and Primary School in Selaiyur, Chennai teaches: ten learning superpowers that machines find hardest to copy, built through hands-on Montessori learning from Pre-KG to Class 5.
+- [Events](https://www.kimsindia.com/events/) ([Markdown](https://www.kimsindia.com/events/index.html.md)): Annual Day, Sports Day, festivals and family days at KIMS Nursery and Primary School, Selaiyur, Chennai: the school year, with stories and photos.
+- [Questions parents ask](https://www.kimsindia.com/faq/) ([Markdown](https://www.kimsindia.com/faq/index.html.md)): Answers about KIMS Nursery and Primary School (Kudos Indian Montessori Shikshalaya), Selaiyur, Chennai: classes, Montessori method, recognition, admissions, location and contact.
+- [Admission enquiry](https://www.kimsindia.com/admission-enquiry/) ([Markdown](https://www.kimsindia.com/admission-enquiry/index.html.md)): Admission enquiry form for KIMS Nursery and Primary School (Kudos Indian Montessori Shikshalaya), Selaiyur, Chennai. Tell us about your child and our admissions team will call you to fix a school visit.
+- [Book a school visit](https://www.kimsindia.com/book-a-visit/) ([Markdown](https://www.kimsindia.com/book-a-visit/index.html.md)): Book a visit to KIMS Nursery and Primary School (Kudos Indian Montessori Shikshalaya), Selaiyur, Chennai. Watch a class at work, meet the teachers and ask anything. Pick a day and our admissions team will confirm it.
+
+## School events
+- [Annual Day 2026: Kaleidoscope](https://www.kimsindia.com/events/annual-day-2026/) ([Markdown](https://www.kimsindia.com/events/annual-day-2026/index.html.md)): Annual Day 2026: Kaleidoscope at KIMS Nursery and Primary School, Selaiyur, Chennai, on 22 March 2026. KIMS and Kudos children took the stage for Kaleidoscope, the Annual Day on 22 March 2026.
+- [Sports Day 2026](https://www.kimsindia.com/events/sports-day-2026/) ([Markdown](https://www.kimsindia.com/events/sports-day-2026/index.html.md)): Sports Day 2026 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 1 March 2026. KIMS and Kudos held their Annual Sports Meet on 1 March 2026 at Sportify Sports Arena, Medavakkam.
+- [Annual Day 2025](https://www.kimsindia.com/events/annual-day-2025/) ([Markdown](https://www.kimsindia.com/events/annual-day-2025/index.html.md)): Annual Day 2025 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 23 March 2025. KIMS children took the stage for the Annual Day on 23 March 2025.
+- [Sports Day 2025](https://www.kimsindia.com/events/sports-day-2025/) ([Markdown](https://www.kimsindia.com/events/sports-day-2025/index.html.md)): Sports Day 2025 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 15 February 2025. The Sports Day on 15 February 2025 brought KIMS and Kudos children together at Sportify Sports Arena, Medavakkam.
+- [Dad's Day 2025](https://www.kimsindia.com/events/dads-day-2025/) ([Markdown](https://www.kimsindia.com/events/dads-day-2025/index.html.md)): Dad's Day 2025 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 25 January 2025. Fathers came to school on 25 January 2025 for Dad's Day.
+- [Christmas 2024](https://www.kimsindia.com/events/christmas-2024/) ([Markdown](https://www.kimsindia.com/events/christmas-2024/index.html.md)): Christmas 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 18 December 2024. KIMS dressed in red and white for Christmas on 18 December 2024.
+- [Mom's Day 2024](https://www.kimsindia.com/events/moms-day-2024/) ([Markdown](https://www.kimsindia.com/events/moms-day-2024/index.html.md)): Mom's Day 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 14 December 2024. On 14 December 2024 mothers spent the morning at school with their children.
+- [Red and Yellow Days 2024](https://www.kimsindia.com/events/colour-days-2024/) ([Markdown](https://www.kimsindia.com/events/colour-days-2024/index.html.md)): Red and Yellow Days 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 4 November 2024. Colour days help the youngest children learn colours by living them for a day.
+- [Deepavali 2024](https://www.kimsindia.com/events/deepavali-2024/) ([Markdown](https://www.kimsindia.com/events/deepavali-2024/index.html.md)): Deepavali 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 29 October 2024. Deepavali at KIMS on 29 October 2024 began at a festival altar decorated with lamps, flowers and sweets.
+- [Grandparents' Day 2024](https://www.kimsindia.com/events/grandparents-day-2024/) ([Markdown](https://www.kimsindia.com/events/grandparents-day-2024/index.html.md)): Grandparents' Day 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 26 October 2024. Grandparents were the guests of honour on 26 October 2024.
+- [Independence Day 2024](https://www.kimsindia.com/events/independence-day-2024/) ([Markdown](https://www.kimsindia.com/events/independence-day-2024/index.html.md)): Independence Day 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 10 August 2024. KIMS and Kudos celebrated Independence Day on 10 August 2024 with the theme Unity in Diversity.
+- [Annual Day 2024](https://www.kimsindia.com/events/annual-day-2024/) ([Markdown](https://www.kimsindia.com/events/annual-day-2024/index.html.md)): Annual Day 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 3 March 2024. The Annual Day on 3 March 2024 filled the stage with colour, in front of a stained-glass KIMS backdrop.
+- [Pongal 2024](https://www.kimsindia.com/events/pongal-2024/) ([Markdown](https://www.kimsindia.com/events/pongal-2024/index.html.md)): Pongal 2024 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 10 January 2024. KIMS celebrated Pongal on 10 January 2024 with a village set: a decorated hut, sugarcane, cows and a Pongal pot.
+- [Vinayaka Chaturthi 2023](https://www.kimsindia.com/events/vinayaka-chaturthi-2023/) ([Markdown](https://www.kimsindia.com/events/vinayaka-chaturthi-2023/index.html.md)): Vinayaka Chaturthi 2023 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 15 September 2023. Children came in traditional clothes for Vinayaka Chaturthi on 15 September 2023.
+- [Karate belt grading 2023](https://www.kimsindia.com/events/karate-2023/) ([Markdown](https://www.kimsindia.com/events/karate-2023/index.html.md)): Karate belt grading 2023 at KIMS Nursery and Primary School, Selaiyur, Chennai, on 21 January 2023. Children in the KIMS karate class were graded on 21 January 2023 and received their new belts and certificates from their instructor.
+
+## Optional
+- [Admissions privacy policy](https://apply.kimsindia.com/privacy/)
+- [Instagram](https://www.instagram.com/kimschennai/)
+- [YouTube](https://www.youtube.com/channel/UCm0CSHcofqnnuuhOSdkZGHw)
+- [Facebook](https://www.facebook.com/p/KIMS-Selaiyur-100086577247536/)

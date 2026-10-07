@@ -269,8 +269,7 @@
 
   // Light / dark switch. A saved choice wins; otherwise the device setting decides.
   const root = document.documentElement;
-  const sys = window.matchMedia('(prefers-color-scheme: dark)');
-  const current = () => root.dataset.theme || (sys.matches ? 'dark' : 'light');
+  const current = () => root.dataset.theme || 'light';
   const toggle = document.querySelector('.theme');
   const label = () => { if (toggle) toggle.setAttribute('aria-label', current() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'); };
   if (toggle) {
@@ -281,7 +280,6 @@
       try { localStorage.setItem('kims-theme', next); } catch (e) { /* private mode: still switches for this page */ }
       label();
     });
-    sys.addEventListener('change', label);
   }
 
   // Event photos open large in a simple viewer; without JS the link just opens the image.
