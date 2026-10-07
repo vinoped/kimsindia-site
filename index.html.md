@@ -198,7 +198,8 @@ Selaiyur, Chennai 600 073
 
 98842 61592 · 739 739 4336
 
-Both numbers are on WhatsApp · [thevedic@gmail.com](mailto:thevedic@gmail.com)
+Both numbers are on WhatsApp.  
+[thevedic@gmail.com](mailto:thevedic@gmail.com)
 
 ### School hours
 

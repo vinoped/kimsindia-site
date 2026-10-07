@@ -267,6 +267,60 @@
     btn.replaceChildren(f);
   }, { once: true }));
 
+  // The "super =" scribble: its arrow is drawn to wherever the word "Superpowers" lands, at any screen width.
+  const spWord = document.querySelector('.sp-word'), scrib = document.querySelector('.scribble');
+  if (spWord && scrib && window.ResizeObserver) {
+    const h2 = spWord.closest('h2'), host = scrib.parentElement, note = scrib.querySelector('span');
+    const NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg');
+    const shaft = document.createElementNS(NS, 'path'), head = document.createElementNS(NS, 'path');
+    shaft.setAttribute('pathLength', '1'); head.setAttribute('pathLength', '1');
+    svg.classList.add('scrawl-live'); svg.setAttribute('aria-hidden', 'true'); svg.append(shaft, head);
+    host.classList.add('has-scrawl'); host.append(svg); scrib.classList.add('is-live');
+    const draw = () => {
+      scrib.style.marginLeft = '0px'; scrib.style.marginTop = '';
+      const H = host.getBoundingClientRect(), Wd = spWord.getBoundingClientRect();
+      const range = document.createRange(); range.selectNodeContents(h2);
+      const below = [...range.getClientRects()].filter((r) => r.width > 0 && r.top > (Wd.top + Wd.bottom) / 2);   // heading lines under the word
+      const clearX = below.length ? Math.max(...below.map((r) => r.right)) - H.left + 14 : -1e9;
+      const tx = Math.min(Math.max(Wd.left - H.left + Wd.width * 0.45, clearX), Wd.right - H.left - 8);
+      const ty = Wd.bottom - H.top + 3;
+      const nw = note.getBoundingClientRect().width;
+      const L = Math.max(0, Math.min(tx + 22, H.width - nw));
+      scrib.style.marginLeft = L + 'px';
+      let T = note.getBoundingClientRect();
+      const gap = T.top - H.top - ty;
+      if (gap < 42) { scrib.style.marginTop = (42 - gap + 2) + 'px'; T = note.getBoundingClientRect(); }
+      const nl = T.left - H.left, nt = T.top - H.top;
+      let sx, sy;
+      if (nl - 8 > tx + 6) { sx = nl - 8; sy = nt + 12; }                          // note to the right: arrow goes up and left
+      else { sx = Math.min(Math.max(tx - 6, clearX, nl + 6), T.right - H.left - 6); sy = nt - 4; }   // note below: arrow goes up
+      const dx = tx - sx, dy = ty - sy, len = Math.hypot(dx, dy) || 1;
+      const cx = (sx + tx) / 2 - (dy / len) * len * 0.22, cy = (sy + ty) / 2 + (dx / len) * len * 0.22;   // a hand-drawn bend
+      shaft.setAttribute('d', `M${sx.toFixed(1)} ${sy.toFixed(1)}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)}`);
+      const a = Math.atan2(ty - cy, tx - cx), k = 11, w = 0.5;
+      const p1 = [tx - k * Math.cos(a - w), ty - k * Math.sin(a - w)], p2 = [tx - k * Math.cos(a + w), ty - k * Math.sin(a + w)];
+      head.setAttribute('d', `M${p1[0].toFixed(1)} ${p1[1].toFixed(1)}L${tx.toFixed(1)} ${ty.toFixed(1)}L${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`);
+    };
+    const redraw = () => requestAnimationFrame(draw);
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(redraw);
+    new ResizeObserver(redraw).observe(host);
+    if ('IntersectionObserver' in window) {   // draws itself in once, when the section scrolls into view
+      const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { svg.classList.add('in'); io.disconnect(); } }, { threshold: 0.6 });
+      io.observe(scrib);
+    } else svg.classList.add('in');
+  }
+
+  // Phone and tablet menu: opens under the header; closes on a link, Escape, a tap outside, or when the screen widens.
+  const mbtn = document.querySelector('.menu-btn'), mnav = document.getElementById('mnav');
+  if (mbtn && mnav) {
+    const setOpen = (open) => { mnav.hidden = !open; mbtn.setAttribute('aria-expanded', String(open)); mbtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+    mbtn.addEventListener('click', () => setOpen(mnav.hidden));
+    mnav.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mnav.hidden) { setOpen(false); mbtn.focus(); } });
+    document.addEventListener('click', (e) => { if (!mnav.hidden && !e.target.closest('.top')) setOpen(false); });
+    matchMedia('(min-width: 981px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
+  }
+
   // Light / dark switch. A saved choice wins; otherwise the device setting decides.
   const root = document.documentElement;
   const current = () => root.dataset.theme || 'light';

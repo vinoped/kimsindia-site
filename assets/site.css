@@ -41,7 +41,7 @@
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }   /* components that set display must still hide */
   img { max-width: 100%; height: auto; }   /* the width/height attributes only reserve space; CSS sets the shape */
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }   /* jumps to a section stop below the sticky header */
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 1160px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
@@ -110,12 +110,31 @@
   .call-top svg { width: 18px; height: 18px; color: var(--red); }
   @media (max-width: 980px) { .menu { display: none; } }
   @media (max-width: 560px) { .call-top { display: none; } }
+  /* phone and tablet menu: a round button like the theme switch, opening a panel of big rows */
+  .menu-btn { display: none; flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); place-items: center; cursor: pointer; padding: 0; }
+  .menu-btn:hover { border-color: var(--ink); }
+  .menu-btn .ic { width: 22px; height: 22px; grid-area: 1 / 1; }
+  .menu-btn .i-close, .menu-btn[aria-expanded="true"] .i-open { display: none; }
+  .menu-btn[aria-expanded="true"] .i-close { display: block; }
+  @media (max-width: 980px) { .menu-btn { display: grid; } }
+  @media (max-width: 560px) { .top .wrap > .btn { display: none; } }   /* the bottom bar and the menu carry "Book a visit" on phones */
+  .top .mnav .wrap { display: block; min-height: 0; }   /* not the header's row layout */
+  .mnav { border-top: 1px solid var(--line); max-height: calc(100dvh - 80px); overflow-y: auto; }
+  .mnav ul { list-style: none; margin: 0; padding: var(--s-2) 0 0; }
+  .mnav li a { display: flex; align-items: center; justify-content: space-between; min-height: 54px; font-weight: 800; font-size: 18px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .mnav li a::after { content: "→"; color: var(--red); font-weight: 800; }
+  .mnav li a[aria-current="page"] { color: var(--red); }
+  .mnav-cta { display: flex; flex-wrap: wrap; gap: var(--s-3); padding-block: var(--s-4) var(--s-5); }
+  .top .mnav-cta .btn { flex: 1 1 140px; min-height: 52px; font-size: 16px; }
+  @media (min-width: 981px) { .mnav { display: none !important; } }
+  @media (prefers-reduced-motion: no-preference) { .mnav:not([hidden]) { animation: mnav-in .28s cubic-bezier(.16, 1, .3, 1); } }
+  @keyframes mnav-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
   /* the wordmark never shrinks under the menu: the header drops the phone number first, then tightens on the smallest phones */
   .brand { min-width: max-content; }
   @media (max-width: 1180px) { .call-top { display: none; } .menu { gap: 16px; } }
   @media (max-width: 374px) {
     .top .wrap { gap: 10px; } .brand { gap: var(--s-2); } .brand .crest { height: 36px; } .wm { height: 22px; }
-    .theme { width: 36px; height: 36px; } .top .btn { padding: 0 12px; font-size: 13.5px; min-height: 40px; }
+    .theme, .menu-btn { width: 40px; height: 40px; }
   }
 
   .namebar { margin: 0; background: var(--brand-red); color: #FFFFFF; border-bottom: 3px solid var(--gold); text-align: center; white-space: nowrap; overflow: hidden;
@@ -141,20 +160,23 @@
   .hero-copy { position: relative; align-self: stretch; display: grid; align-content: center; padding-block: 124px; }
   .hero-copy > .flow { position: relative; z-index: 1; }
   .hero-float { position: absolute; inset: 0; pointer-events: none; }
-  .hf { position: absolute; height: auto; transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 14px 16px rgba(70, 25, 10, .18)); }
-  .hf-rods { width: 124px; left: -4px; top: 22px; --r: -8deg; --i: .05s; --d: 7s; }
-  .hf-magnifier { width: 66px; left: 34%; top: -2px; --r: 18deg; --i: .2s; --d: 6s; }
-  .hf-globe { width: 88px; left: 64%; top: 30px; --r: 6deg; --i: .35s; --d: 8s; }
-  .hf-beads { width: 100px; left: 6%; bottom: 14px; --r: 8deg; --i: .5s; --d: 7.5s; }
-  .hf-tower { width: 50px; left: 46%; bottom: 30px; --r: -5deg; --i: .65s; --d: 6.5s; }
-  .hf-rocket { width: 96px; left: -44px; top: -40px; z-index: 2; --r: 0deg; --i: .8s; --d: 5.5s; }
+  .hf { position: absolute; width: auto; transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 14px 16px rgba(70, 25, 10, .18)); }
+  .hf-rods { height: 88px; left: -4px; top: 14px; --r: -8deg; --i: .05s; --d: 7s; }
+  .hf-magnifier { height: 70px; left: 34%; top: 0; --r: 18deg; --i: .2s; --d: 6s; }
+  .hf-globe { height: 100px; left: 64%; top: 6px; --r: 6deg; --i: .35s; --d: 8s; }
+  .hf-beads { height: 84px; left: 6%; bottom: 14px; --r: 8deg; --i: .5s; --d: 7.5s; }
+  .hf-tower { height: 96px; left: 46%; bottom: 4px; --r: -5deg; --i: .65s; --d: 6.5s; }
+  .hf-rocket { height: 84px; left: 76%; bottom: 10px; --r: 0deg; --i: .8s; --d: 5.5s; }
+  /* phones and tablets: the objects get their own row under the buttons, so they can never cover words or buttons */
   @media (max-width: 900px) {
     .hero-copy { padding-block: 0; }
-    .hf-rods, .hf-magnifier, .hf-beads, .hf-tower { display: none; }
-    .hf-globe { width: min(84px, 23vw); left: auto; right: 0; top: auto; bottom: -4px; }
-    .hf-rocket { width: 64px; left: -6px; top: -18px; }
+    .hero-float { position: static; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-2);
+      margin-top: var(--s-5); padding-top: 14px; max-width: 440px; }
+    .hf { position: static; width: auto; height: 52px; }
+    .hf-tower { height: 56px; }
   }
-  @media (max-width: 374px) { .hf-globe { display: none; } }   /* no free space beside the buttons on the smallest phones */
+  @media (max-width: 413px) { .hf-magnifier, .hf-tower { display: none; } }   /* four objects on narrow phones, so they never touch */
+  @media (max-width: 374px) { .hf { height: 46px; } }
   @media (prefers-reduced-motion: no-preference) {
     .hf { animation: hf-in .9s cubic-bezier(.16, 1, .3, 1) var(--i, 0s) both, hf-bob var(--d, 7s) ease-in-out calc(var(--i, 0s) + .9s) infinite alternate; }
   }
@@ -395,6 +417,18 @@
   .scrawl { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; display: block; flex: none; width: 58px; height: 42px; transform: scaleY(-1); }
   .scribble span { transform: rotate(-2deg); padding-bottom: 2px; }
   @media (max-width: 520px) { .scribble { margin-left: calc(var(--h2s) * 2.6); } }
+  /* with JS the arrow is drawn live from the note to the word (see site.js); the fixed arrow above is the no-JS fallback */
+  .has-scrawl { position: relative; }
+  .scribble.is-live .scrawl { display: none; }
+  .scribble.is-live span { transform: rotate(-2deg); }
+  .flow > .scrawl-live, .scrawl-live { margin: 0; }   /* the section's spacing rule must not push the drawing layer down */
+  .scrawl-live { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none;
+    fill: none; stroke: var(--red); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  @media (prefers-reduced-motion: no-preference) {
+    .scrawl-live path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .scrawl-live.in path { transition: stroke-dashoffset .7s cubic-bezier(.65, 0, .35, 1); stroke-dashoffset: 0; }
+    .scrawl-live.in path + path { transition-delay: .6s; transition-duration: .2s; }
+  }
 
   /* the ten, as in the "all ten at a glance" page of the school's PDF: one tinted card each */
   .sp-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-3); }
@@ -735,6 +769,8 @@
   .eq-progress span { display: block; height: 100%; width: 0; background: var(--red); border-radius: inherit; transition: width .35s ease; }
   .eq-count { color: var(--muted); font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin: var(--s-2) 0 var(--s-5); }
   .q { display: block; font: 700 clamp(23px, 3vw, 30px)/1.2 var(--display); margin-bottom: var(--s-2); text-wrap: balance; }
+  @media (max-width: 400px) { .q { font-size: 21px; } }
+  .nw { white-space: nowrap; }
   .q-e { display: inline-block; font: 400 1em/1 var(--emoji); margin-right: 10px; vertical-align: -2px; }
   .q-help { color: var(--muted); font-size: 16px; margin-bottom: var(--s-4); }
   .step .q + .eq-in, .step .q + .eq-f, .step .q + .eq-chips, .step .q + .eq-quick { margin-top: var(--s-4); }
